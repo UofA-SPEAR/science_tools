@@ -12,18 +12,19 @@ class gpsCl():
         self.position = (0, 0)
         self.movement = {'speed': 0, 'track': 0, 'climb' : 0}
 
-    def pollData(gps):  # polls all data and returns wanted data
+    def pollData(gps):  # polls all data and returns wanted data in json formatted txt file
+        dataFile = open('gpsData.txt', 'w')
         packet = gpsd.get_current()
         gps.position = packet.position()
         gps.movement = packet.movement()
         # TODO: use packet.XXXX to get desired data fields
 
-        return json.dumps(gps)
-
+        dataFile.write(json.dumps(gps))
+        dataFile.close()
 
 def main():
     gps = gpsCl()
 
     while(True):
         gps.pollData()
-        time.sleep(gps.waitTime)
+        time.sleep(waitTime)
