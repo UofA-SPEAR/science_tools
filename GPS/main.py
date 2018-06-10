@@ -7,7 +7,7 @@ waitTime = 10  # set polling time to once every 10 sec
 # connects to gps, should be fixed to support connection issues
 class gpsCl():
     # TODO: set up data fields for wanted information
-    def __init__():
+    def __init__(self):
         gpsd.connect()
         self.position = (0, 0)
         self.movement = {'speed': 0, 'track': 0, 'climb' : 0}
@@ -22,9 +22,8 @@ class gpsCl():
         dataFile.write(json.dumps(gps))
         dataFile.close()
 
-def main():
-    gps = gpsCl()
+gps = gpsCl()
 
-    while(True):
-        gps.pollData()
-        time.sleep(waitTime)
+while(True):
+    gps.pollData()
+    time.sleep(waitTime)
