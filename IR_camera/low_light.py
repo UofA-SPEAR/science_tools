@@ -1,6 +1,7 @@
 from io import BytesIO
 from picamera import PiCamera
 from time import sleep
+from fractions import Fraction
 
 # Force sensor mode 3 (the long exposure mode), set
 # the framerate to 1/6fps, the shutter speed to 6s,
