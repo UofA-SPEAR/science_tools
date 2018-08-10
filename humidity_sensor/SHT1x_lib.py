@@ -73,8 +73,8 @@ def main():
     while 1:
         temp = _read_temperature(data_pin,sck_pin,vdd,resolution)
         hum = _read_humidity(data_pin,sck_pin,vdd,resolution,temp)
-        print "Temperature: %.2f Celsius"% temp 
-        print "Humidity: %.2f %%\n" % hum 
+        print("Temperature: %.2f Celsius"% temp)
+        print("Humidity: %.2f %%\n" % hum)
         time.sleep(1.0)
 
 ##########################################################
@@ -252,7 +252,7 @@ def _get_ack(data_pin,sck_pin):
 
     ack = GPIO.input(data_pin)
     if ack == GPIO.LOW:
-        print "not collecting data"
+        print("not collecting data")
 
 
 """
@@ -292,7 +292,7 @@ def _read_measurement(data_pin,sck_pin):
     
     value_bin |= _get_byte(data_pin,sck_pin)
     _end_transmission(data_pin,sck_pin)
-    print value_bin
+    print(value_bin)
     return value_bin
 
 """
