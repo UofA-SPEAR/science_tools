@@ -66,16 +66,16 @@ vdd = 5
 #need to uncomment main at bottom of code to use this test section
 
 def main():
-	time.sleep(1.0)
-	#_set_status_register(data_pin,sck_pin,resolution,heater)
-	time.sleep(1.0)
+    time.sleep(1.0)
+    #_set_status_register(data_pin,sck_pin,resolution,heater)
+    time.sleep(1.0)
 
-	while 1:
-		temp = _read_temperature(data_pin,sck_pin,vdd,resolution)
-		hum = _read_humidity(data_pin,sck_pin,vdd,resolution,temp)
-		print "Temperature: %.2f Celsius"% temp 
-		print "Humidity: %.2f %%\n" % hum 
-		time.sleep(1.0)
+    while 1:
+        temp = _read_temperature(data_pin,sck_pin,vdd,resolution)
+        hum = _read_humidity(data_pin,sck_pin,vdd,resolution,temp)
+        print "Temperature: %.2f Celsius"% temp 
+        print "Humidity: %.2f %%\n" % hum 
+        time.sleep(1.0)
 
 ##########################################################
 """
@@ -215,10 +215,10 @@ def _send_byte(data_pin,sck_pin,command):
     GPIO.setup(sck_pin, GPIO.OUT)
     
     for element in command:
-	if element == 1:
+        if element == 1:
             GPIO.output(data_pin,GPIO.HIGH)
-	elif element == 0:
-	    GPIO.output(data_pin,GPIO.LOW)
+        elif element == 0:
+            GPIO.output(data_pin,GPIO.LOW)
         GPIO.output(sck_pin,GPIO.HIGH)
         time.sleep(delay_100ns)
         GPIO.output(sck_pin,GPIO.LOW)
@@ -243,7 +243,7 @@ def _get_ack(data_pin,sck_pin):
     time.sleep(delay_100ns)
     
     while 1:
-	ack = GPIO.input(data_pin)
+        ack = GPIO.input(data_pin)
         if ack == GPIO.LOW:
             break
     
@@ -252,7 +252,7 @@ def _get_ack(data_pin,sck_pin):
 
     ack = GPIO.input(data_pin)
     if ack == GPIO.LOW:
-	print "not collecting data"
+        print "not collecting data"
 
 
 """
